@@ -40,7 +40,7 @@ namespace taller_nro1.Controllers
         {
             try
             {
-                if (clothe.Name == "")
+                if (clothe.Name == "" || clothe.Price == 0.0)
                     return StatusCode(400);
                 return StatusCode(201);
             }
