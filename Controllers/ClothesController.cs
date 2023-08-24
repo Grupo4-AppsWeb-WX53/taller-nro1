@@ -25,17 +25,29 @@ namespace taller_nro1.Controllers
             return _clothesData;
         }
 
+        
         // GET: api/Clothes/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
             return "value";
         }
-
+        
+        
         // POST: api/Clothes
         [HttpPost]
-        public void Post([FromBody] string value)
+        public StatusCodeResult Post([FromBody] Clothes clothe)
         {
+            try
+            {
+                if (clothe.Name == "")
+                    return StatusCode(400);
+                return StatusCode(201);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500);
+            }
         }
 
         // PUT: api/Clothes/5
