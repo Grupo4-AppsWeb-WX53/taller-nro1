@@ -20,7 +20,7 @@ namespace taller_nro1.Controllers
         }
 
         // GET: api/Category/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetCategory")]
         public Category Get(int id)
         {
             Category category = new Category();
