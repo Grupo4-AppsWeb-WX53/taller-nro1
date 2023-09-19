@@ -41,18 +41,24 @@ namespace taller_nro1.Controllers
 
         // PUT: api/Ropa/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult UpdateRopa(int id, Ropa prenda)
         {
+            var existentePrenda = _ropas.FirstOrDefault(p => p.Id == id);
+            if (existentePrenda == null)
+                return NotFound();
+            existentePrenda.Name = prenda.Name;
+            existentePrenda.Price = prenda.Price;
+            return NoContent();
         }
 
         // DELETE: api/Ropa/5
         [HttpDelete("{id}")]
         public IActionResult DeleteRopa(int id)
         {
-            var ropa = _ropas.FirstOrDefault(p => p.Id == id);
-            if (ropa == null)
+            var prenda = _ropas.FirstOrDefault(p => p.Id == id);
+            if (prenda == null)
                 return NotFound();
-            _ropas.Remove(ropa);
+            _ropas.Remove(prenda);
             return NoContent();
         }
     }
